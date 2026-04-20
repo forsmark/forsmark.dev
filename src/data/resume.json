@@ -1,0 +1,91 @@
+{
+  "name": "Marc Forsmark Nielsen",
+  "title": "Senior Frontend Developer",
+  "tagline": "Building performant, beautiful interfaces with React & TypeScript",
+  "about": "I'm a Senior Frontend Engineer based in Copenhagen, with 6+ years building performant, detail-obsessed interfaces across SaaS, medtech, and data-heavy platforms. I care deeply about the intersection of engineering rigour and great UX — the kind of work where clean code and a polished experience aren't in tension, they're the same goal. When I'm not pushing pixels, I'm usually mentoring, optimising something that didn't need optimising, or finding ways to bring AI tooling into the team's workflow.",
+  "aboutShort": "Senior Frontend Engineer based in Copenhagen. 7+ years building performant, detail-obsessed interfaces across SaaS and medtech — where engineering rigour and great UX are the same goal.",
+  "linkedin": "https://linkedin.com/in/marc-forsmark-nielsen/",
+  "github": "https://github.com/forsmark",
+  "roles": [
+    {
+      "title": "Lead Frontend Developer",
+      "company": "MedTrace Pharma A/S",
+      "period": "2024–Present",
+      "current": true,
+      "description": "Leading frontend architecture for a medical data visualization platform. Building complex interactive charts and data workflows with Lit and TypeScript.",
+      "tech": ["Lit", "TypeScript", "Data Visualization"]
+    },
+    {
+      "title": "Frontend Developer",
+      "company": "Accutics ApS",
+      "period": "2021–2024",
+      "description": "Built high-performance SaaS web applications with React, TypeScript, and Tailwind CSS. Led performance optimization efforts and mentored junior developers.",
+      "tech": ["React", "TypeScript", "Tailwind CSS"]
+    },
+    {
+      "title": "Lead Frontend Developer",
+      "company": "Inuatek A/S",
+      "period": "2021",
+      "description": "Led frontend team building real-time dashboards and control interfaces for IoT and robotics platform.",
+      "tech": ["JavaScript", "Java", "Go"]
+    },
+    {
+      "title": "Software Developer",
+      "company": "Inuatek A/S",
+      "period": "2019–2021",
+      "description": "Full-stack development across JavaScript, Java, and Go. Built foundational systems for the IoT platform.",
+      "tech": ["JavaScript", "Java", "Go"]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Computer Science",
+      "institution": "Zealand",
+      "period": "2016–2019"
+    },
+    {
+      "degree": "Geology",
+      "institution": "University of Copenhagen",
+      "period": "2011–2013"
+    },
+    {
+      "degree": "Computer Science",
+      "institution": "University of Copenhagen",
+      "period": "2010–2011"
+    }
+  ],
+  "skillGroups": [
+    {
+      "category": "Frontend",
+      "skills": [
+        { "name": "JavaScript", "since": 2019 },
+        { "name": "TypeScript", "since": 2021 },
+        { "name": "React", "since": 2019 },
+        { "name": "Tailwind CSS", "since": 2021 },
+        { "name": "Lit", "since": 2024 },
+        { "name": "Framer Motion", "since": 2022 },
+        { "name": "TanStack", "since": 2021 }
+      ],
+      "primary": true
+    },
+    {
+      "category": "Testing",
+      "skills": [
+        { "name": "Jest", "since": 2021 },
+        { "name": "Playwright", "since": 2022 },
+        { "name": "Cypress", "since": 2021 }
+      ]
+    },
+    {
+      "category": "Tools",
+      "skills": [
+        { "name": "Git", "since": 2019 },
+        { "name": "Figma", "since": 2021 },
+        { "name": "Vite", "since": 2022 },
+        { "name": "Bun", "since": 2024 },
+        { "name": "Node.js", "since": 2019 },
+        { "name": "Claude Code", "since": 2025 }
+      ]
+    }
+  ]
+}

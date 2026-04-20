@@ -1,0 +1,24 @@
+[
+  {
+    "id": "new-era",
+    "title": "New Era — Job Aggregator",
+    "description": "Personal job tracking tool that aggregates listings from LinkedIn and Jobindex.dk, scores them with a local LLM against your CV and preferences, and manages the application pipeline on a kanban board — all running locally, no cloud.",
+    "highlights": [
+      "Aggregates and deduplicates listings from LinkedIn and Jobindex.dk by source + external ID",
+      "Local Ollama model (gemma4:26b) scores each job 0–100 against your CV with inline reasoning",
+      "Async analysis pipeline — jobs appear immediately, scores fill in as the LLM completes",
+      "Four-column kanban (Applied → Interview → Offer → Rejected) with notes and interview dates"
+    ],
+    "tech": ["Bun", "TypeScript", "Hono", "React", "Vite", "SQLite", "Ollama", "Docker"],
+    "year": "2026",
+    "githubUrl": "https://github.com/forsmark/newera",
+    "previewHeight": "lg",
+    "preview": "/projects/new-era/jobs-list.png",
+    "images": [
+      { "src": "/projects/new-era/jobs-list.png", "caption": "Jobs feed — ranked by match score" },
+      { "src": "/projects/new-era/job-expanded.png", "caption": "Expanded job — inline LLM reasoning" },
+      { "src": "/projects/new-era/kanban.png", "caption": "Kanban board — application pipeline" },
+      { "src": "/projects/new-era/preferences.png", "caption": "Preferences — stack, salary, seniority" }
+    ]
+  }
+]
