@@ -1,10 +1,10 @@
 {
   "name": "Marc Forsmark Nielsen",
   "title": "Product Engineer",
-  "subtitle": "Frontend, UX and AI-powered products",
+  "subtitle": "Frontend, UX and AI products",
   "location": "Copenhagen",
   "statement": "I build AI tools and data-heavy products that people in regulated work can understand and trust. I take features from the user problem through design to release.",
-  "motto": "Structure holds. People decide.",
+  "motto": "Human in the loop. Human in scope.",
   "email": "marc@forsmark.dev",
   "linkedin": "https://www.linkedin.com/in/marc-forsmark-nielsen/",
   "github": "https://github.com/forsmark",
@@ -15,9 +15,9 @@
       "period": "2024 – present",
       "points": [
         "Lead frontend development of a medical data visualization platform built with Lit and TypeScript.",
-        "Drive adoption of AI tooling in the engineering workflow.",
-        "Improve the team's delivery process: sprint planning, testing practice and documentation that supports compliant releases.",
-        "Work across teams on product reliability and regulatory requirements for medical software."
+        "Drive the team's adoption of Codex and Claude Code in daily engineering work.",
+        "Improve the team's delivery process, with a focus on sprint planning and testing practice.",
+        "Work across teams on traceability for regulated releases. Automated tests generate the documentation each release needs."
       ]
     },
     {
@@ -26,7 +26,7 @@
       "period": "2021 – 2024",
       "points": [
         "Built SaaS web applications with React, TypeScript and Tailwind CSS.",
-        "Rewrote the rendering logic for large, data-heavy forms, which made them substantially faster.",
+        "Rewrote the rendering logic for large, data-heavy forms, cutting render times from seconds to milliseconds.",
         "Designed data entry flows for high-volume input, with focus on speed and accuracy.",
         "Implemented an accessible design system together with designers in Figma."
       ]
@@ -38,7 +38,7 @@
       "points": [
         "Led frontend development of the company's IoT data platform in React.",
         "Reworked user flows and visual design across the product.",
-        "Mentored junior developers and promoted engineering best practices across the team."
+        "Mentored junior developers."
       ]
     },
     {
@@ -46,7 +46,7 @@
       "company": "Inuatek A/S",
       "period": "2019 – 2021",
       "points": [
-        "Full-stack development, and a React platform for data collection and visualization.",
+        "Built and maintained a React platform for data collection and visualization.",
         "Rewrote the IoT node graph traversal from Python to Go, with better data structures and lower algorithmic complexity.",
         "Developed Java plugins that connect Universal Robots arms to the platform."
       ]

@@ -9,27 +9,44 @@
         if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
       } catch (e) {}
     </script>
-    <meta name="description" content="Marc Forsmark Nielsen, Product Engineer in Copenhagen. Frontend, UX and AI-powered products for regulated industries." />
+    <title>Marc Forsmark Nielsen · Product Engineer</title>
+    <meta name="description" content="Marc Forsmark Nielsen is a Product Engineer in Copenhagen. Frontend, UX and AI products for regulated industries, with case studies, experience and principles." />
+    <meta name="author" content="Marc Forsmark Nielsen" />
+    <link rel="canonical" href="https://forsmark.dev/" />
+    <meta property="og:site_name" content="Marc Forsmark Nielsen" />
+    <meta property="og:locale" content="en_GB" />
     <meta property="og:title" content="Marc Forsmark Nielsen, Product Engineer" />
-    <meta property="og:description" content="Frontend, UX and AI-powered products for regulated industries." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.forsmark.dev/" />
-    <meta property="og:image" content="https://www.forsmark.dev/og-image.png" />
+    <meta property="og:description" content="Frontend, UX and AI products for regulated industries. Based in Copenhagen." />
+    <meta property="og:type" content="profile" />
+    <meta property="profile:first_name" content="Marc" />
+    <meta property="profile:last_name" content="Forsmark Nielsen" />
+    <meta property="og:url" content="https://forsmark.dev/" />
+    <meta property="og:image" content="https://forsmark.dev/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Marc Forsmark Nielsen in profile, with his name across the portrait. Product Engineer." />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://www.forsmark.dev/og-image.png" />
-    <title>Marc Forsmark Nielsen · Product Engineer</title>
+    <meta name="twitter:title" content="Marc Forsmark Nielsen, Product Engineer" />
+    <meta name="twitter:description" content="Frontend, UX and AI products for regulated industries. Based in Copenhagen." />
+    <meta name="twitter:image" content="https://forsmark.dev/og-image.png" />
+    <meta name="twitter:image:alt" content="Marc Forsmark Nielsen in profile, with his name across the portrait. Product Engineer." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" as="image" href="/portrait.webp" fetchpriority="high" />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Marc Forsmark Nielsen",
-      "url": "https://www.forsmark.dev",
+      "url": "https://forsmark.dev/",
+      "image": "https://forsmark.dev/portrait.webp",
+      "email": "mailto:marc@forsmark.dev",
       "jobTitle": "Product Engineer",
+      "address": { "@type": "PostalAddress", "addressLocality": "Copenhagen", "addressCountry": "DK" },
+      "knowsAbout": ["Product engineering", "Frontend development", "UX design", "AI products", "TypeScript", "React", "Regulated software"],
+      "alumniOf": { "@type": "EducationalOrganization", "name": "Zealand Academy of Technologies and Business" },
       "sameAs": [
-        "https://linkedin.com/in/marc-forsmark-nielsen/",
+        "https://www.linkedin.com/in/marc-forsmark-nielsen/",
         "https://github.com/forsmark"
       ]
     }
@@ -40,6 +57,13 @@
   <body>
     <a href="#main-content" class="skip-to-content">Skip to content</a>
     <div id="root"></div>
+    <noscript>
+      <main style="max-width: 40rem; padding: 2rem; font-family: system-ui, sans-serif; color: #e9e8e2">
+        <h1>Marc Forsmark Nielsen, Product Engineer</h1>
+        <p>I build AI tools and data-heavy products that people in regulated work can understand and trust. Lead Frontend Developer at MedTrace Pharma A/S in Copenhagen.</p>
+        <p><a href="mailto:marc@forsmark.dev" style="color: inherit">marc@forsmark.dev</a> · <a href="https://www.linkedin.com/in/marc-forsmark-nielsen/" style="color: inherit">LinkedIn</a> · <a href="https://github.com/forsmark" style="color: inherit">GitHub</a></p>
+      </main>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

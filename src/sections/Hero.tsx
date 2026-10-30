@@ -70,6 +70,7 @@ export function Hero({ onOpenProject }: { onOpenProject: (id: string) => void })
           alt="Marc Forsmark Nielsen in profile, in black and white"
           width={1024}
           height={1290}
+          fetchPriority="high"
           className="absolute right-[-6%] bottom-0 h-[94%] w-auto max-w-none grayscale lg:right-[-2.5rem] lg:bottom-[-16%] lg:h-[114%]"
         />
         <Name />

@@ -8,8 +8,8 @@
     "build": [
       "A scheduled worker scrapes 25 venues into Postgres. It re-reads only concerts whose listing changed, so a daily run takes seconds.",
       "A React client lists the concerts and shows them on a map.",
-      "Passwordless accounts mark concerts, and a status change is recorded as an alert.",
-      "Decisions are written down as ADRs. The curated venue list is the product's boundary."
+      "Fans mark concerts with a passwordless account and get an email when a marked concert changes status.",
+      "Decisions are written down as ADRs. Only venues on the curated list are included."
     ],
     "status": "In beta, v1.0 late 2026",
     "year": "2025 – 2026",
@@ -33,7 +33,7 @@
       "Jobs appear at once, and scores fill in as the model finishes.",
       "A kanban board tracks applications, with notes and interview dates. Everything runs locally."
     ],
-    "status": "Public",
+    "status": "Self-hosted",
     "year": "2026",
     "tech": [
       "Bun",
@@ -89,7 +89,7 @@
     "id": "agent-clis",
     "tier": "lead",
     "title": "Agent-first CLIs",
-    "problem": "AI agents use an API most safely through a tool with strict, predictable output.",
+    "problem": "AI agents that call an API directly can misread its output and act without a person's approval.",
     "people": "AI agents, and the people who supervise what those agents do.",
     "build": [
       "Standard output carries JSON data only. Errors go to standard error as structured JSON.",

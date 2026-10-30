@@ -1,15 +1,15 @@
 # Marc Forsmark Nielsen
 
-**Product Engineer** · Frontend, UX and AI-powered products · Copenhagen, Denmark
+**Product Engineer** · Frontend, UX and AI products · Copenhagen, Denmark
 
-Product engineer with 7+ years of experience building data-heavy web products in TypeScript. I take features from the user problem through design to release, with a strong frontend and UX focus. I lead frontend work in regulated medtech today, and I help teams adopt AI tooling in their daily engineering work.
+Product engineer with 7+ years of experience building data-heavy web products in TypeScript. I take features from the user problem through design to release, with a frontend and UX focus. I lead frontend work in regulated medtech today, and I help teams adopt Codex and Claude Code in their daily engineering work.
 
 ---
 
 ## Contact
 
 - **Email:** marc.forsmark.nielsen@gmail.com
-- **Website:** [forsmark.dev](https://www.forsmark.dev/)
+- **Website:** [forsmark.dev](https://forsmark.dev/)
 - **LinkedIn:** [linkedin.com/in/marc-forsmark-nielsen](https://www.linkedin.com/in/marc-forsmark-nielsen/)
 - **GitHub:** [github.com/forsmark](https://github.com/forsmark)
 
@@ -22,16 +22,16 @@ Product engineer with 7+ years of experience building data-heavy web products in
 *2024 – present*
 
 - Lead frontend development of a medical data visualization platform built with Lit and TypeScript.
-- Drive adoption of AI tooling in the engineering workflow.
-- Improve the team's delivery process: sprint planning, testing practice and documentation that supports compliant releases.
-- Work across teams on product reliability and regulatory requirements for medical software.
+- Drive the team's adoption of Codex and Claude Code in daily engineering work.
+- Improve the team's delivery process, with a focus on sprint planning and testing practice.
+- Work across teams on traceability for regulated releases. Automated tests generate the documentation each release needs.
 
 ### Frontend Developer · Accutics ApS
 
 *2021 – 2024*
 
 - Built SaaS web applications with React, TypeScript and Tailwind CSS.
-- Rewrote the rendering logic for large, data-heavy forms, which made them substantially faster.
+- Rewrote the rendering logic for large, data-heavy forms, cutting render times from seconds to milliseconds.
 - Designed data entry flows for high-volume input, with focus on speed and accuracy.
 - Expanded unit, integration and end-to-end test coverage with Jest, Cypress and Playwright.
 - Implemented an accessible design system together with designers in Figma.
@@ -42,7 +42,7 @@ Product engineer with 7+ years of experience building data-heavy web products in
 
 - Led frontend development of the company's IoT data platform in React.
 - Reworked user flows and visual design across the product.
-- Mentored junior developers and promoted engineering best practices across the team.
+- Mentored junior developers.
 
 **Software Developer** · *2019 – 2021*
 
