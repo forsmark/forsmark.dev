@@ -1,91 +1,74 @@
 {
   "name": "Marc Forsmark Nielsen",
-  "title": "Senior Frontend Developer",
-  "tagline": "Building performant, beautiful interfaces with React & TypeScript",
-  "about": "I'm a Senior Frontend Engineer based in Copenhagen, with 6+ years building performant, detail-obsessed interfaces across SaaS, medtech, and data-heavy platforms. I care deeply about the intersection of engineering rigour and great UX — the kind of work where clean code and a polished experience aren't in tension, they're the same goal. When I'm not pushing pixels, I'm usually mentoring, optimising something that didn't need optimising, or finding ways to bring AI tooling into the team's workflow.",
-  "aboutShort": "Senior Frontend Engineer based in Copenhagen. 7+ years building performant, detail-obsessed interfaces across SaaS and medtech — where engineering rigour and great UX are the same goal.",
-  "linkedin": "https://linkedin.com/in/marc-forsmark-nielsen/",
+  "title": "Product Engineer",
+  "subtitle": "Frontend, UX and AI-powered products",
+  "location": "Copenhagen",
+  "statement": "I build AI tools and data-heavy products that people in regulated work can understand and trust. I take features from the user problem through design to release.",
+  "motto": "Structure holds. People decide.",
+  "email": "marc@forsmark.dev",
+  "linkedin": "https://www.linkedin.com/in/marc-forsmark-nielsen/",
   "github": "https://github.com/forsmark",
   "roles": [
     {
       "title": "Lead Frontend Developer",
       "company": "MedTrace Pharma A/S",
-      "period": "2024–Present",
-      "current": true,
-      "description": "Leading frontend architecture for a medical data visualization platform. Building complex interactive charts and data workflows with Lit and TypeScript.",
-      "tech": ["Lit", "TypeScript", "Data Visualization"]
+      "period": "2024 – present",
+      "points": [
+        "Lead frontend development of a medical data visualization platform built with Lit and TypeScript.",
+        "Drive adoption of AI tooling in the engineering workflow.",
+        "Improve the team's delivery process: sprint planning, testing practice and documentation that supports compliant releases.",
+        "Work across teams on product reliability and regulatory requirements for medical software."
+      ]
     },
     {
       "title": "Frontend Developer",
       "company": "Accutics ApS",
-      "period": "2021–2024",
-      "description": "Built high-performance SaaS web applications with React, TypeScript, and Tailwind CSS. Led performance optimization efforts and mentored junior developers.",
-      "tech": ["React", "TypeScript", "Tailwind CSS"]
+      "period": "2021 – 2024",
+      "points": [
+        "Built SaaS web applications with React, TypeScript and Tailwind CSS.",
+        "Rewrote the rendering logic for large, data-heavy forms, which made them substantially faster.",
+        "Designed data entry flows for high-volume input, with focus on speed and accuracy.",
+        "Implemented an accessible design system together with designers in Figma."
+      ]
     },
     {
       "title": "Lead Frontend Developer",
       "company": "Inuatek A/S",
       "period": "2021",
-      "description": "Led frontend team building real-time dashboards and control interfaces for IoT and robotics platform.",
-      "tech": ["JavaScript", "Java", "Go"]
+      "points": [
+        "Led frontend development of the company's IoT data platform in React.",
+        "Reworked user flows and visual design across the product.",
+        "Mentored junior developers and promoted engineering best practices across the team."
+      ]
     },
     {
       "title": "Software Developer",
       "company": "Inuatek A/S",
-      "period": "2019–2021",
-      "description": "Full-stack development across JavaScript, Java, and Go. Built foundational systems for the IoT platform.",
-      "tech": ["JavaScript", "Java", "Go"]
+      "period": "2019 – 2021",
+      "points": [
+        "Full-stack development, and a React platform for data collection and visualization.",
+        "Rewrote the IoT node graph traversal from Python to Go, with better data structures and lower algorithmic complexity.",
+        "Developed Java plugins that connect Universal Robots arms to the platform."
+      ]
     }
   ],
   "education": [
-    {
-      "degree": "Computer Science",
-      "institution": "Zealand",
-      "period": "2016–2019"
-    },
-    {
-      "degree": "Geology",
-      "institution": "University of Copenhagen",
-      "period": "2011–2013"
-    },
-    {
-      "degree": "Computer Science",
-      "institution": "University of Copenhagen",
-      "period": "2010–2011"
-    }
+    { "degree": "AP Degree, Computer Science", "institution": "Zealand Academy of Technologies and Business", "period": "2016 – 2019" },
+    { "degree": "Geology", "institution": "University of Copenhagen", "period": "2011 – 2013" },
+    { "degree": "Computer Science", "institution": "University of Copenhagen", "period": "2010 – 2011" }
   ],
-  "skillGroups": [
+  "principles": [
     {
-      "category": "Frontend",
-      "skills": [
-        { "name": "JavaScript", "since": 2019 },
-        { "name": "TypeScript", "since": 2021 },
-        { "name": "React", "since": 2019 },
-        { "name": "Tailwind CSS", "since": 2021 },
-        { "name": "Lit", "since": 2024 },
-        { "name": "Framer Motion", "since": 2022 },
-        { "name": "TanStack", "since": 2021 }
-      ],
-      "primary": true
+      "title": "People decide",
+      "body": "AI suggests, people stay in control. Every AI feature shows what it did and why, and a person can check it, change it or turn it off."
     },
     {
-      "category": "Testing",
-      "skills": [
-        { "name": "Jest", "since": 2021 },
-        { "name": "Playwright", "since": 2022 },
-        { "name": "Cypress", "since": 2021 }
-      ]
+      "title": "Built to be checked",
+      "body": "In regulated work, tests, documentation and traceability are part of the product, not paperwork after it."
     },
     {
-      "category": "Tools",
-      "skills": [
-        { "name": "Git", "since": 2019 },
-        { "name": "Figma", "since": 2021 },
-        { "name": "Vite", "since": 2022 },
-        { "name": "Bun", "since": 2024 },
-        { "name": "Node.js", "since": 2019 },
-        { "name": "Claude Code", "since": 2025 }
-      ]
+      "title": "Problem first",
+      "body": "Start with who uses it and in what situation. The stack comes after, and it stays boring where it can."
     }
   ]
 }

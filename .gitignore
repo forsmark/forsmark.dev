@@ -1,19 +1,31 @@
-!**/glob-import/dir/node_modules
+# Dependencies and build output
+node_modules
+dist
+*.tsbuildinfo
+.eslintcache
+
+# Logs and local env
+*.log
+*.local
+.env
+.env.*
+
+# Editors and OS
 .DS_Store
 .idea
-.pnpm-store
-*.cpuprofile
-*.local
-*.log
-/.vscode/
-/docs/*/**
-/packages/vite/LICENSE
-dist
-dist-ssr
-explorations
-node_modules
-playground-temp
-temp
+.vscode/
+
+# AI agent tooling (local only)
 CLAUDE.md
-.eslintcache
+.claude/
+.agents/
 skills-lock.json
+
+# Impeccable design tooling (local only)
+.impeccable/
+PRODUCT.md
+DESIGN.md
+public/*.json
+.github/agents/
+.github/hooks/
+.github/skills/

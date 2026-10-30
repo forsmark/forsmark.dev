@@ -1,24 +1,166 @@
 [
   {
-    "id": "new-era",
-    "title": "New Era — Job Aggregator",
-    "description": "Personal job tracking tool that aggregates listings from LinkedIn and Jobindex.dk, scores them with a local LLM against your CV and preferences, and manages the application pipeline on a kanban board — all running locally, no cloud.",
-    "highlights": [
-      "Aggregates and deduplicates listings from LinkedIn and Jobindex.dk by source + external ID",
-      "Local Ollama model (gemma4:26b) scores each job 0–100 against your CV with inline reasoning",
-      "Async analysis pipeline — jobs appear immediately, scores fill in as the LLM completes",
-      "Four-column kanban (Applied → Interview → Offer → Rejected) with notes and interview dates"
+    "id": "copenscene",
+    "tier": "lead",
+    "title": "CopenScene",
+    "problem": "Concerts for Copenhagen's metal, hardcore and punk scene are spread over 25 venue websites.",
+    "people": "Fans of the scene who want one overview, and a reason to check back when a show changes.",
+    "build": [
+      "A scheduled worker scrapes 25 venues into Postgres. It re-reads only concerts whose listing changed, so a daily run takes seconds.",
+      "A React client lists the concerts and shows them on a map.",
+      "Passwordless accounts mark concerts, and a status change is recorded as an alert.",
+      "Decisions are written down as ADRs. The curated venue list is the product's boundary."
     ],
-    "tech": ["Bun", "TypeScript", "Hono", "React", "Vite", "SQLite", "Ollama", "Docker"],
+    "status": "In beta, v1.0 late 2026",
+    "year": "2025 – 2026",
+    "tech": [
+      "NestJS",
+      "Postgres",
+      "Drizzle",
+      "React",
+      "Podman"
+    ]
+  },
+  {
+    "id": "new-era",
+    "tier": "lead",
+    "title": "New Era",
+    "problem": "Job listings arrive from several sites, and most of them do not fit.",
+    "people": "A job seeker who wants to read only the jobs worth applying for, without sending a CV to a cloud service.",
+    "build": [
+      "Collects and deduplicates listings from LinkedIn and Jobindex.",
+      "A local Ollama model scores each job from 0 to 100 against the CV and shows its reasoning inline.",
+      "Jobs appear at once, and scores fill in as the model finishes.",
+      "A kanban board tracks applications, with notes and interview dates. Everything runs locally."
+    ],
+    "status": "Public",
     "year": "2026",
+    "tech": [
+      "Bun",
+      "Hono",
+      "React",
+      "SQLite",
+      "Ollama",
+      "Docker"
+    ],
     "githubUrl": "https://github.com/forsmark/newera",
-    "previewHeight": "lg",
-    "preview": "/projects/new-era/jobs-list.png",
     "images": [
-      { "src": "/projects/new-era/jobs-list.png", "caption": "Jobs feed — ranked by match score" },
-      { "src": "/projects/new-era/job-expanded.png", "caption": "Expanded job — inline LLM reasoning" },
-      { "src": "/projects/new-era/kanban.png", "caption": "Kanban board — application pipeline" },
-      { "src": "/projects/new-era/preferences.png", "caption": "Preferences — stack, salary, seniority" }
+      {
+        "src": "/projects/new-era/jobs-list.png",
+        "caption": "Jobs ranked by match score"
+      },
+      {
+        "src": "/projects/new-era/job-expanded.png",
+        "caption": "A job with the model's reasoning"
+      },
+      {
+        "src": "/projects/new-era/kanban.png",
+        "caption": "The application pipeline"
+      },
+      {
+        "src": "/projects/new-era/preferences.png",
+        "caption": "Preferences for stack, salary and seniority"
+      }
+    ]
+  },
+  {
+    "id": "citadel",
+    "tier": "lead",
+    "title": "Citadel",
+    "problem": "Running a D&D game means juggling prep notes, rules and session logs across many tools.",
+    "people": "One game master, me, before, during and after each session. It runs on my own server.",
+    "build": [
+      "Campaign content lives in its own git repository, the Vault. The app holds only code.",
+      "An MCP server exposes the campaign to an AI assistant through the same core as the HTTP API.",
+      "A compendium of monsters, spells and items is imported from a pinned, checksummed 5e.tools release.",
+      "Typecheck, lint, unit tests and Playwright end-to-end tests run against a fresh dev Vault."
+    ],
+    "status": "Self-hosted",
+    "year": "2026",
+    "tech": [
+      "Hono",
+      "React",
+      "MCP",
+      "Vitest",
+      "Playwright"
+    ]
+  },
+  {
+    "id": "agent-clis",
+    "tier": "lead",
+    "title": "Agent-first CLIs",
+    "problem": "AI agents use an API most safely through a tool with strict, predictable output.",
+    "people": "AI agents, and the people who supervise what those agents do.",
+    "build": [
+      "Standard output carries JSON data only. Errors go to standard error as structured JSON.",
+      "Typed exit codes separate auth, validation, not found, network and schema drift.",
+      "brevo-cli reaches all 291 Brevo API operations and refuses outward actions, such as sending email, until a person approves.",
+      "A family of CLIs: Hevy, Brevo, Scryfall, Archidekt, Hardcover, Yazio and Saxo."
+    ],
+    "status": "Public",
+    "year": "2026",
+    "tech": [
+      "TypeScript",
+      "Node.js",
+      "OS keychain"
+    ],
+    "githubUrl": "https://github.com/forsmark/brevo-cli"
+  },
+  {
+    "id": "game-night",
+    "tier": "more",
+    "title": "Game Night",
+    "problem": "A monthly board game night needs RSVPs, game choices and table plans.",
+    "people": "A host and their friends, joining from one group link without passwords.",
+    "build": [
+      "Approval voting on suggested games.",
+      "A planner picks the games that suit the most attendees and splits large groups into two tables.",
+      "The host's shelf is imported from a BoardGameGeek export."
+    ],
+    "status": "In use",
+    "year": "2026",
+    "tech": [
+      "Hono",
+      "SQLite",
+      "React",
+      "TanStack"
+    ]
+  },
+  {
+    "id": "bettercardmarket",
+    "tier": "more",
+    "title": "Better CardMarket",
+    "problem": "Building a wants list on Cardmarket takes many manual clicks per card.",
+    "people": "Magic: The Gathering players who buy singles.",
+    "build": [
+      "Pastes a decklist into a wants list, card by card.",
+      "Selects allowed printings by rules and estimates the price of the list."
+    ],
+    "status": "Public",
+    "year": "2026",
+    "tech": [
+      "TypeScript",
+      "Chrome extension"
+    ],
+    "githubUrl": "https://github.com/forsmark/bettercardmarket"
+  },
+  {
+    "id": "eazy-gains",
+    "tier": "more",
+    "title": "eazy gains",
+    "problem": "Planning high-protein dinners around this week's grocery offers takes time.",
+    "people": "One to four people who cook dinner at home in Denmark.",
+    "build": [
+      "Plans three to seven dinners from current offers at five Danish grocery chains.",
+      "Fits each dinner to a protein and calorie range, and builds a shopping list per store."
+    ],
+    "status": "Proof of concept",
+    "year": "2026",
+    "tech": [
+      "Hono",
+      "React",
+      "MCP",
+      "Python"
     ]
   }
 ]

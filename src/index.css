@@ -1,28 +1,65 @@
 @import "tailwindcss";
+@import "@fontsource-variable/antonio";
+@import "@fontsource-variable/archivo";
 
-@theme {
-  --color-bg-dark: #0f0f0f;
-  --color-bg-mid: #1a1a2e;
-  --color-bg-light: #16213e;
-  --color-accent: #0d9488;
-  --color-accent-light: #14b8a6;
-  --color-accent-subtle: oklch(from #0d9488 l c h / 0.15);
-  --color-accent-border: oklch(from #0d9488 l c h / 0.2);
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #cccccc;
-  --color-text-muted: #888888;
-  --color-text-dim: #666666;
-  --color-surface: oklch(from #ffffff l c h / 0.02);
-  --color-surface-hover: oklch(from #ffffff l c h / 0.05);
-  --color-border: oklch(from #ffffff l c h / 0.06);
-  --color-border-subtle: oklch(from #ffffff l c h / 0.05);
-  --font-sans: 'Geist', system-ui, sans-serif;
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
+/* Night side of the wall is the default. Day side is opt-in. */
+:root {
+  color-scheme: dark;
+  --bar: #0a0b0c;
+  --rule: #3a3d42;
+  --pane: #1e2023;
+  --pane-2: #151719;
+  --pane-rest: #282b30;
+  --pane-lit: #31353b;
+  --clear: #d9d8d1;
+  --ink: #e9e8e2;
+  --dim: #9a9ea3;
+  --signal: #4f6a8f;
+  --signal-ink: #f2f1ec;
+  --note: #8e5a4a;
+  --note-ink: #f2f1ec;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bar: #141518;
+  --rule: #141518;
+  --pane: #e9e8e2;
+  --pane-2: #dad9d1;
+  --pane-rest: #f2f1ec;
+  --pane-lit: #f8f7f3;
+  --clear: #e9e8e2;
+  --ink: #141518;
+  --dim: #565a60;
+  --signal: #3f5878;
+  --signal-ink: #f5f4ef;
+  --note: #7d4c3e;
+  --note-ink: #f5f4ef;
+}
+
+@theme inline {
+  --color-bar: var(--bar);
+  --color-rule: var(--rule);
+  --color-pane: var(--pane);
+  --color-pane-2: var(--pane-2);
+  --color-pane-rest: var(--pane-rest);
+  --color-pane-lit: var(--pane-lit);
+  --color-clear: var(--clear);
+  --color-ink: var(--ink);
+  --color-dim: var(--dim);
+  --color-signal: var(--signal);
+  --color-signal-ink: var(--signal-ink);
+  --color-note: var(--note);
+  --color-note-ink: var(--note-ink);
+  --font-sans: "Archivo Variable", system-ui, sans-serif;
+  --font-display: "Antonio Variable", "Archivo Variable", sans-serif;
+  --ease-glass: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
-  background-color: var(--color-bg-dark);
+  background-color: var(--bar);
   scroll-behavior: smooth;
+  scrollbar-color: var(--rule) var(--bar);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -32,49 +69,70 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, var(--color-bg-dark) 0%, var(--color-bg-mid) 50%, var(--color-bg-light) 100%);
-  background-attachment: fixed;
-  color: var(--color-text-primary);
+  background-color: var(--bar);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "tnum" 0;
   min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s var(--ease-glass), color 0.4s var(--ease-glass);
 }
 
-/* Grain overlay */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 256px 256px;
+::selection {
+  background-color: var(--signal);
+  color: var(--signal-ink);
 }
 
-/* Skip to content */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bar);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--rule);
+  border: 2px solid var(--bar);
+}
+
+input,
+textarea {
+  caret-color: var(--signal);
+}
+
+a {
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -4px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
 .skip-to-content {
   position: absolute;
   left: -9999px;
   top: 0;
-  z-index: 10000;
-  padding: 0.75rem 1.5rem;
-  background: var(--color-accent);
-  color: var(--color-bg-dark);
+  z-index: 50;
+  padding: 0.75rem 1.25rem;
+  background: var(--signal);
+  color: var(--signal-ink);
   font-weight: 600;
-  font-size: 0.875rem;
-  border-radius: 0 0 0.5rem 0;
 }
-
 .skip-to-content:focus {
   left: 0;
 }
 
-/* Scroll anchoring */
 section[id] {
-  scroll-margin-top: 2rem;
+  scroll-margin-top: 0;
 }
 
-/* Focus ring */
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
+@media (max-width: 1023px) {
+  section[id] {
+    scroll-margin-top: 3.25rem;
+  }
 }

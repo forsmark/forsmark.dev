@@ -2,9 +2,7 @@ export interface Role {
   title: string;
   company: string;
   period: string;
-  current?: boolean;
-  description: string;
-  tech: string[];
+  points: string[];
 }
 
 export interface Education {
@@ -13,39 +11,37 @@ export interface Education {
   period: string;
 }
 
-export interface Skill {
-  name: string;
-  since: number;
-}
-
-export interface SkillGroup {
-  category: string;
-  skills: Skill[];
-  primary?: boolean;
+export interface Principle {
+  title: string;
+  body: string;
 }
 
 export interface ResumeData {
   name: string;
   title: string;
-  tagline: string;
-  about: string;
-  aboutShort: string;
+  subtitle: string;
+  location: string;
+  statement: string;
+  motto: string;
+  email: string;
   linkedin: string;
+  github: string;
   roles: Role[];
   education: Education[];
-  skillGroups: SkillGroup[];
+  principles: Principle[];
 }
 
 export interface Project {
   id: string;
+  tier: "lead" | "more";
   title: string;
-  description: string;
-  highlights: string[];
-  tech: string[];
+  problem: string;
+  people: string;
+  build: string[];
+  status: string;
   year: string;
+  tech: string[];
   demoUrl?: string;
   githubUrl?: string;
-  previewHeight?: "sm" | "md" | "lg";
-  preview?: string;
   images?: { src: string; caption?: string }[];
 }
