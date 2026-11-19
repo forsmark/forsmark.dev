@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { animate, motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { Pane } from "../components/Pane";
 import { EmailPane } from "../components/EmailPane";
+import { ArrowRight } from "../components/Icons";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { glassEase } from "../lib/motion";
 import resume from "../data/resume.json";
@@ -77,13 +78,9 @@ export function Hero({ onOpenProject }: { onOpenProject: (id: string) => void })
       </Pane>
 
       <div className="grid gap-px bg-rule lg:grid-rows-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)]">
-        {featured.map((p, i) => (
-          <Pane key={p.id} tone={i === 0 ? "rest" : "deep"} reveal={false}>
-            <button
-              type="button"
-              onClick={() => onOpenProject(p.id)}
-              className="flex h-full w-full flex-col justify-end gap-3 p-6 text-left transition-colors duration-500 ease-glass hover:bg-pane-lit lg:p-7"
-            >
+        {featured.map((p, i) => {
+          const body = (
+            <>
               <span className={`block font-display uppercase leading-none ${i === 0 ? "text-5xl" : "text-3xl"}`}>
                 {p.title}
               </span>
@@ -91,9 +88,31 @@ export function Hero({ onOpenProject }: { onOpenProject: (id: string) => void })
               <span className="block text-sm text-dim">
                 {p.status} · <span className="tabular">{p.year}</span>
               </span>
-            </button>
-          </Pane>
-        ))}
+              {i === 0 && p.caseStudyUrl && (
+                <span className="flex items-center gap-3 text-sm">
+                  Read the case study
+                  <ArrowRight />
+                </span>
+              )}
+            </>
+          );
+          const cls =
+            "flex h-full w-full flex-col justify-end gap-3 p-6 text-left transition-colors duration-500 ease-glass hover:bg-pane-lit lg:p-7";
+          return (
+            <Pane key={p.id} tone={i === 0 ? "rest" : "deep"} reveal={false}>
+              {/* The lead project goes straight to its case study. The others open their pane below. */}
+              {i === 0 && p.caseStudyUrl ? (
+                <a href={p.caseStudyUrl} className={cls}>
+                  {body}
+                </a>
+              ) : (
+                <button type="button" onClick={() => onOpenProject(p.id)} className={cls}>
+                  {body}
+                </button>
+              )}
+            </Pane>
+          );
+        })}
       </div>
 
       <div className="grid gap-px bg-rule md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:col-span-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_20rem]">

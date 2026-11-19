@@ -4,12 +4,12 @@
     "tier": "lead",
     "title": "CopenScene",
     "problem": "Concerts for Copenhagen's metal, hardcore and punk scene are spread over 28 venue websites.",
-    "people": "Fans of the scene who want one overview, and a reason to check back when a show changes.",
+    "people": "Fans of the scene who want one overview, and to hear when a show changes.",
     "build": [
-      "A scheduled worker scrapes 28 venues into Postgres. It re-reads only concerts whose listing changed, so a daily run takes seconds.",
+      "A scheduled worker scrapes the 28 venues on a curated list into Postgres. It re-reads only concerts whose listing changed, so a daily run takes seconds.",
       "A React client lists the concerts and shows them on a map.",
       "Fans mark concerts with a passwordless account and get an email when a marked concert changes status.",
-      "Decisions are written down as ADRs. Only venues on the curated list are included."
+      "Decisions are written down as architecture decision records (ADRs)."
     ],
     "status": "Sign-up opens 1 December 2026",
     "year": "2025 – 2026",
@@ -33,68 +33,50 @@
     ]
   },
   {
-    "id": "new-era",
+    "id": "fstack",
     "tier": "lead",
-    "title": "New Era",
-    "problem": "Job listings arrive from several sites, and most of them do not fit.",
-    "people": "A job seeker who wants to read only the jobs worth applying for, without sending a CV to a cloud service.",
+    "title": "fstack",
+    "problem": "A Claude Code setup of plugins, skills, an output style and instructions lives as loose files in ~/.claude, and every machine needs the same copy.",
+    "people": "Daily Claude Code users with more than one machine.",
     "build": [
-      "Collects and deduplicates listings from LinkedIn and Jobindex.",
-      "A local Ollama model scores each job from 0 to 100 against the CV and shows its reasoning inline.",
-      "Jobs appear at once, and scores fill in as the model finishes.",
-      "A kanban board tracks applications, with notes and interview dates. Everything runs locally."
+      "One git repository holds the whole setup, and one install script links and installs every part.",
+      "The repository is also a Claude Code plugin marketplace, so each plugin installs on its own from GitHub.",
+      "It holds six plugins, four skills and one output style.",
+      "The spec-checks plugin checks OpenSpec specs and changes with a CLI that also runs in CI. Its suite has 204 tests."
+    ],
+    "status": "Public",
+    "year": "2026",
+    "tech": [
+      "TypeScript",
+      "Node.js",
+      "Claude Code",
+      "OpenSpec",
+      "Bash"
+    ],
+    "githubUrl": "https://github.com/forsmark/fstack"
+  },
+  {
+    "id": "sieve",
+    "tier": "lead",
+    "title": "sieve",
+    "problem": "Job boards list many postings, and checking each one against a CV by hand takes time.",
+    "people": "Anyone following several job boards, with their own CV to rank the postings against.",
+    "build": [
+      "Fetches postings from five public job boards on a schedule and removes duplicates of one job across boards.",
+      "A language model extracts the facts of each posting and judges how well it fits the CV.",
+      "Code applies the hard constraints, such as location and spoken language, and computes the score from the user's weights.",
+      "Runs for a single user, as one Node.js process with one SQLite file. Nine OpenSpec specs hold 181 scenarios, each mapped to a unit test."
     ],
     "status": "Self-hosted",
     "year": "2026",
     "tech": [
-      "Bun",
+      "TypeScript",
       "Hono",
       "React",
       "SQLite",
-      "Ollama",
-      "Docker"
+      "OpenSpec"
     ],
-    "githubUrl": "https://github.com/forsmark/newera",
-    "images": [
-      {
-        "src": "/projects/new-era/jobs-list.png",
-        "caption": "Jobs ranked by match score"
-      },
-      {
-        "src": "/projects/new-era/job-expanded.png",
-        "caption": "A job with the model's reasoning"
-      },
-      {
-        "src": "/projects/new-era/kanban.png",
-        "caption": "The application pipeline"
-      },
-      {
-        "src": "/projects/new-era/preferences.png",
-        "caption": "Preferences for stack, salary and seniority"
-      }
-    ]
-  },
-  {
-    "id": "citadel",
-    "tier": "lead",
-    "title": "Citadel",
-    "problem": "Running a D&D game means juggling prep notes, rules and session logs across many tools.",
-    "people": "One game master, me, before, during and after each session. It runs on my own server.",
-    "build": [
-      "Campaign content lives in its own git repository, the Vault. The app holds only code.",
-      "An MCP server exposes the campaign to an AI assistant through the same core as the HTTP API.",
-      "A compendium of monsters, spells and items is imported from a pinned, checksummed 5e.tools release.",
-      "Typecheck, lint, unit tests and Playwright end-to-end tests run against a fresh dev Vault."
-    ],
-    "status": "Self-hosted",
-    "year": "2026",
-    "tech": [
-      "Hono",
-      "React",
-      "MCP",
-      "Vitest",
-      "Playwright"
-    ]
+    "githubUrl": "https://github.com/forsmark/sieve"
   },
   {
     "id": "agent-clis",
@@ -116,62 +98,5 @@
       "OS keychain"
     ],
     "githubUrl": "https://github.com/forsmark/brevo-cli"
-  },
-  {
-    "id": "game-night",
-    "tier": "more",
-    "title": "Game Night",
-    "problem": "A monthly board game night needs RSVPs, game choices and table plans.",
-    "people": "A host and their friends, joining from one group link without passwords.",
-    "build": [
-      "Approval voting on suggested games.",
-      "A planner picks the games that suit the most attendees and splits large groups into two tables.",
-      "The host's shelf is imported from a BoardGameGeek export."
-    ],
-    "status": "In use",
-    "year": "2026",
-    "tech": [
-      "Hono",
-      "SQLite",
-      "React",
-      "TanStack"
-    ]
-  },
-  {
-    "id": "bettercardmarket",
-    "tier": "more",
-    "title": "Better CardMarket",
-    "problem": "Building a wants list on Cardmarket takes many manual clicks per card.",
-    "people": "Magic: The Gathering players who buy singles.",
-    "build": [
-      "Pastes a decklist into a wants list, card by card.",
-      "Selects allowed printings by rules and estimates the price of the list."
-    ],
-    "status": "Public",
-    "year": "2026",
-    "tech": [
-      "TypeScript",
-      "Chrome extension"
-    ],
-    "githubUrl": "https://github.com/forsmark/bettercardmarket"
-  },
-  {
-    "id": "eazy-gains",
-    "tier": "more",
-    "title": "eazy gains",
-    "problem": "Planning high-protein dinners around this week's grocery offers takes time.",
-    "people": "One to four people who cook dinner at home in Denmark.",
-    "build": [
-      "Plans three to seven dinners from current offers at five Danish grocery chains.",
-      "Fits each dinner to a protein and calorie range, and builds a shopping list per store."
-    ],
-    "status": "Proof of concept",
-    "year": "2026",
-    "tech": [
-      "Hono",
-      "React",
-      "MCP",
-      "Python"
-    ]
   }
 ]

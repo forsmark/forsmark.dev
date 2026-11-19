@@ -25,6 +25,7 @@ skills-lock.json
 .impeccable/
 PRODUCT.md
 DESIGN.md
+HANDOFF.md
 public/*.json
 .github/agents/
 .github/hooks/

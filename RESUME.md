@@ -23,7 +23,7 @@ Product engineer with 7+ years of experience building data-heavy web products in
 
 - Lead frontend development of a medical data visualization platform built with Lit and TypeScript.
 - Drive the team's adoption of Codex and Claude Code in daily engineering work.
-- Improve the team's delivery process, with a focus on sprint planning and testing practice.
+- Improve the team's sprint planning and testing practice.
 - Work across teams on traceability for regulated releases. Automated tests generate the documentation each release needs.
 
 ### Frontend Developer · Accutics ApS
@@ -32,7 +32,7 @@ Product engineer with 7+ years of experience building data-heavy web products in
 
 - Built SaaS web applications with React, TypeScript and Tailwind CSS.
 - Rewrote the rendering logic for large, data-heavy forms, cutting render times from seconds to milliseconds.
-- Designed data entry flows for high-volume input, with focus on speed and accuracy.
+- Designed data entry flows for high-volume input.
 - Expanded unit, integration and end-to-end test coverage with Jest, Cypress and Playwright.
 - Implemented an accessible design system together with designers in Figma.
 
@@ -48,7 +48,7 @@ Product engineer with 7+ years of experience building data-heavy web products in
 
 - Full-stack development in JavaScript, Java and Go.
 - Built and maintained a React platform for data collection and visualization.
-- Rewrote the IoT node graph traversal from Python to Go, with better data structures and lower algorithmic complexity.
+- Rewrote the IoT node graph traversal from Python to Go, and lowered its algorithmic complexity with new data structures.
 - Designed a custom caching layer in Go for the backend.
 - Developed Java plugins that connect Universal Robots arms to the platform.
 

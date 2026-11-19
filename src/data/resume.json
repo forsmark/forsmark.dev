@@ -16,7 +16,7 @@
       "points": [
         "Lead frontend development of a medical data visualization platform built with Lit and TypeScript.",
         "Drive the team's adoption of Codex and Claude Code in daily engineering work.",
-        "Improve the team's delivery process, with a focus on sprint planning and testing practice.",
+        "Improve the team's sprint planning and testing practice.",
         "Work across teams on traceability for regulated releases. Automated tests generate the documentation each release needs."
       ]
     },
@@ -27,7 +27,7 @@
       "points": [
         "Built SaaS web applications with React, TypeScript and Tailwind CSS.",
         "Rewrote the rendering logic for large, data-heavy forms, cutting render times from seconds to milliseconds.",
-        "Designed data entry flows for high-volume input, with focus on speed and accuracy.",
+        "Designed data entry flows for high-volume input.",
         "Implemented an accessible design system together with designers in Figma."
       ]
     },
@@ -47,7 +47,7 @@
       "period": "2019 – 2021",
       "points": [
         "Built and maintained a React platform for data collection and visualization.",
-        "Rewrote the IoT node graph traversal from Python to Go, with better data structures and lower algorithmic complexity.",
+        "Rewrote the IoT node graph traversal from Python to Go, and lowered its algorithmic complexity with new data structures.",
         "Developed Java plugins that connect Universal Robots arms to the platform."
       ]
     }
@@ -60,11 +60,11 @@
   "principles": [
     {
       "title": "People decide",
-      "body": "AI suggests, people stay in control. Every AI feature shows what it did and why, and a person can check it, change it or turn it off."
+      "body": "Every AI feature shows what it did and why, and a person can check it, change it or turn it off."
     },
     {
       "title": "Built to be checked",
-      "body": "In regulated work, tests, documentation and traceability are part of the product, not paperwork after it."
+      "body": "In regulated work, tests, documentation and traceability are part of the product."
     },
     {
       "title": "Problem first",

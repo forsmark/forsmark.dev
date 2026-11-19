@@ -9,7 +9,6 @@ import type { Project } from "../data/types";
 
 const all = projects as Project[];
 const lead = all.filter((p) => p.tier === "lead");
-const more = all.filter((p) => p.tier === "more");
 
 interface WorkProps {
   openId: string | null;
@@ -18,7 +17,7 @@ interface WorkProps {
 
 /**
  * Lites of unequal size, as in a real partition: one tall feature, two stacked
- * beside it and a wide low lite under them. The "more" band uses 2/1/2 spans.
+ * beside it and a wide low lite under them.
  */
 const LITES: Record<string, { span: string; title: string; minH: string; feature?: boolean }> = {
   copenscene: {
@@ -27,8 +26,8 @@ const LITES: Record<string, { span: string; title: string; minH: string; feature
     minH: "min-h-[24rem] lg:min-h-[34rem]",
     feature: true,
   },
-  "new-era": { span: "", title: "text-[clamp(2.5rem,3.4vw,3.5rem)]", minH: "min-h-[17rem]" },
-  citadel: { span: "", title: "text-[clamp(2.5rem,3.4vw,3.5rem)]", minH: "min-h-[17rem]" },
+  fstack: { span: "", title: "text-[clamp(2.5rem,3.4vw,3.5rem)]", minH: "min-h-[17rem]" },
+  sieve: { span: "", title: "text-[clamp(2.5rem,3.4vw,3.5rem)]", minH: "min-h-[17rem]" },
   "agent-clis": {
     span: "md:col-span-2 lg:col-span-3",
     title: "text-[clamp(2.75rem,4.5vw,4.5rem)]",
@@ -36,46 +35,24 @@ const LITES: Record<string, { span: string; title: string; minH: string; feature
   },
 };
 
-const MORE_SPANS = ["lg:col-span-2", "", "lg:col-span-2"];
-const MORE_TAIL_SPAN = "lg:col-span-5 lg:min-h-[9rem]";
-
-function ClosedPane({ project, size, narrow }: { project: Project; size: "lead" | "more"; narrow: boolean }) {
+function ClosedPane({ project }: { project: Project }) {
   const lite = LITES[project.id];
+  const shot = lite?.feature ? project.images?.[0] : undefined;
   return (
-    <div
-      className={`flex h-full flex-col justify-between gap-10 p-6 lg:p-8 ${
-        size === "lead" ? lite?.minH ?? "min-h-[17rem]" : "min-h-[15rem]"
-      }`}
-    >
+    <div className={`flex h-full flex-col justify-between gap-10 p-6 lg:p-8 ${lite?.minH ?? "min-h-[17rem]"}`}>
       <span className="block">
-        <span
-          className={`block font-display leading-[0.92] uppercase ${
-            size === "lead" ? lite?.title ?? "text-5xl" : "text-4xl"
-          }`}
-        >
+        <span className={`block font-display leading-[0.92] uppercase ${lite?.title ?? "text-5xl"}`}>
           {project.title}
         </span>
-        <span className={`mt-4 block max-w-[46ch] ${size === "lead" ? "text-lg" : ""}`}>{project.problem}</span>
+        <span className="mt-4 block max-w-[46ch] text-lg">{project.problem}</span>
       </span>
-      {lite?.feature && (
-        <span className="grid border-y border-rule md:grid-cols-2">
-          <span className="block border-b border-rule py-5 md:border-b-0 md:pr-8">
-            <span className="block max-w-[40ch] leading-relaxed text-dim">{project.people}</span>
-          </span>
-          <span className="block py-5 md:border-l md:border-rule md:pl-8">
-            {project.build.slice(0, 2).map((b) => (
-              <span key={b} className="mb-3 block max-w-[46ch] leading-relaxed last:mb-0">
-                {b}
-              </span>
-            ))}
-          </span>
-        </span>
-      )}
+      {/* The screenshot is decorative here: the open pane and the case study carry the captions. */}
+      {shot && <img src={shot.src} alt="" loading="lazy" className="w-full border border-rule" />}
       <span className="flex flex-wrap justify-between gap-x-6 gap-y-1 text-sm text-dim">
         <span>
           {project.status} · <span className="tabular">{project.year}</span>
         </span>
-        {!narrow && <span>{project.tech.join(" · ")}</span>}
+        <span>{project.tech.join(" · ")}</span>
       </span>
     </div>
   );
@@ -165,13 +142,7 @@ function OpenPane({ project, onClose }: { project: Project; onClose: () => void 
   );
 }
 
-function ProjectGrid({
-  items,
-  size,
-  openId,
-  onToggle,
-  className,
-}: { items: Project[]; size: "lead" | "more"; className: string } & WorkProps) {
+function ProjectGrid({ items, openId, onToggle, className }: { items: Project[]; className: string } & WorkProps) {
   const reduced = useReducedMotion();
   const refs = useRef<Record<string, HTMLElement | null>>({});
   const lastOpened = useRef<string | null>(null);
@@ -192,9 +163,9 @@ function ProjectGrid({
 
   return (
     <div className={`grid gap-px bg-rule ${className}`}>
-      {items.map((p, i) => {
+      {items.map((p) => {
         const open = p.id === openId;
-        const span = size === "lead" ? LITES[p.id]?.span ?? "" : MORE_SPANS[i] ?? "";
+        const span = LITES[p.id]?.span ?? "";
         return (
           <motion.article
             key={p.id}
@@ -204,7 +175,7 @@ function ProjectGrid({
             }}
             layout={!reduced}
             transition={glass(0.65)}
-            className={`relative scroll-mt-14 bg-pane lg:scroll-mt-0 ${open ? "col-span-full" : span}`}
+            className={`relative flex scroll-mt-14 flex-col bg-pane lg:scroll-mt-0 ${open ? "col-span-full" : span}`}
           >
             <AnimatePresence mode="popLayout" initial={false}>
               {open ? (
@@ -229,31 +200,25 @@ function ProjectGrid({
                   initial={reduced ? false : { opacity: 0 }}
                   animate={{ opacity: 1, transition: glass(0.6) }}
                   exit={{ opacity: 0, transition: { duration: 0.15 } }}
-                  className={`block h-full w-full text-left transition-colors duration-500 ease-glass hover:bg-pane-lit ${
-                    size === "lead" ? "bg-pane" : "bg-pane-2"
-                  }`}
+                  className="block w-full flex-1 bg-pane text-left transition-colors duration-500 ease-glass hover:bg-pane-lit"
                 >
-                  <ClosedPane project={p} size={size} narrow={size === "more" && span === ""} />
+                  <ClosedPane project={p} />
                 </motion.button>
               )}
             </AnimatePresence>
+            {/* A link of its own, so the case study is one click away without opening the pane. */}
+            {!open && p.caseStudyUrl && (
+              <a
+                href={p.caseStudyUrl}
+                className="flex items-center justify-between gap-6 border-t border-rule bg-note p-6 text-lg text-note-ink transition-opacity duration-500 ease-glass hover:opacity-90 lg:px-8"
+              >
+                Read the {p.title} case study
+                <ArrowRight />
+              </a>
+            )}
           </motion.article>
         );
       })}
-      {size === "more" && (
-        <a
-          href="https://github.com/forsmark?tab=repositories"
-          className={`flex min-h-[15rem] flex-col justify-between gap-8 bg-pane-rest p-6 transition-colors duration-500 ease-glass hover:bg-pane-lit lg:p-8 ${MORE_TAIL_SPAN}`}
-        >
-          <span className="flex justify-end text-dim">
-            <ArrowUpRight />
-          </span>
-          <span className="block">
-            <span className="block font-display text-4xl leading-[0.95] uppercase">Everything else on GitHub</span>
-            <span className="mt-2 block text-sm text-dim">github.com/forsmark</span>
-          </span>
-        </a>
-      )}
     </div>
   );
 }
@@ -269,25 +234,12 @@ export function Work({ openId, onToggle }: WorkProps) {
         </Pane>
         <Pane className="flex items-end p-6 lg:p-8">
           <p className="max-w-[52ch] text-lg leading-snug text-dim">
-            Personal projects. Most of them run on my own self-hosted platform. Each one starts with a problem and
-            the people who have it. Open a pane to read how it was built.
+            Personal projects. Open a pane to read how it was built.
           </p>
         </Pane>
       </div>
       <LayoutGroup id="lead">
-        <ProjectGrid items={lead} size="lead" openId={openId} onToggle={onToggle} className="md:grid-cols-2 lg:grid-cols-3" />
-      </LayoutGroup>
-      <Pane className="px-6 py-5 lg:px-8">
-        <h3 className="font-display text-2xl tracking-[0.06em] uppercase">More projects</h3>
-      </Pane>
-      <LayoutGroup id="more">
-        <ProjectGrid
-          items={more}
-          size="more"
-          openId={openId}
-          onToggle={onToggle}
-          className="sm:grid-cols-2 lg:grid-cols-5"
-        />
+        <ProjectGrid items={lead} openId={openId} onToggle={onToggle} className="md:grid-cols-2 lg:grid-cols-3" />
       </LayoutGroup>
     </section>
   );

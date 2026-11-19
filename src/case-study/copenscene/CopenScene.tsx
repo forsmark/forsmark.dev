@@ -6,7 +6,6 @@ import {
   CaseStudyNav,
   CodeExcerpt,
   ExternalLink,
-  MaintainerTodo,
   Section,
   SectionHead,
   Shot,
@@ -34,7 +33,7 @@ const STATS = [
   { value: "48", label: "capability specs" },
   { value: "1,889", label: "requirements in them" },
   { value: "3,426", label: "of 3,795 scenarios mapped to a test or a written reason" },
-  { value: "2,554", label: "end-to-end runs in the last full suite, all passed" },
+  { value: "2,554", label: "end-to-end test runs in the last full suite, all passed" },
   { value: "~6,900", label: "unit and integration tests" },
   { value: "3,570", label: "commits since 16 September 2026" },
   { value: "53", label: "releases, and 76 release candidates" },
@@ -54,21 +53,21 @@ const DECISIONS = [
     title: "A concert's key holds its date",
     decision:
       "A concert is matched across runs by venue, date and normalised headliner, kept beside a surrogate key. An earlier version hashed the event and ticket URLs, and a venue adding a ticket link after the announcement produced a duplicate.",
-    cost: "A show moved to a new date became a new row, which I accepted as rare. On 31 October 2026 a venue moved a show from November 2026 to September 2027 on the same page, and the readers going to it heard nothing. ADR 0024 now reads that pair as a Move: the old concert reads postponed and names the new date, and its watches move with it.",
+    cost: "A show moved to a new date became a new row, which I accepted as rare. On 31 October 2026 a venue moved a show from November 2026 to September 2027 on the same page, and the readers going to it heard nothing. It was the case ADR 0008 said to watch for. Since ADR 0024 the site reads that pair as a Move: the old concert reads postponed and names the new date, and its watches move with it.",
   },
   {
     adr: "ADR 0008",
     title: "Delisting tells nobody",
     decision:
-      "When a concert drops off a venue's programme, CopenScene records it and sends nothing. A cancellation is read only from the status the venue publishes. I checked first: all 63 delistings in the database had a harmless cause. 61 came from one bad run, and two were shows that had already taken place.",
-    cost: "The ADR names the risk: someone holding a ticket to a show a venue quietly withdraws is not told. It also says to reopen the decision the day such a case is seen. The moved show above was the first, and ADR 0024 answered it.",
+      "When a concert drops off a venue's programme, CopenScene records it and sends nothing. A cancellation is read only from the status the venue publishes. Before deciding, I checked all 63 delistings in the database, and each had a harmless cause. 61 came from one bad run, and two were shows that had already taken place.",
+    cost: "As the ADR says, someone holding a ticket to a show a venue quietly withdraws is not told. It also says to reopen the decision the day such a case is seen.",
   },
   {
     adr: "ADR 0011",
     title: "A digest window moves only on a send",
     decision:
-      "The weekly digest is built from the catalogue when it is sent, and a row is written only when the mail went out. There is no outbox and no retry. A failed send leaves the window where it was.",
-    cost: "Four failed weeks make the fifth digest hold five weeks of concerts. The first design measured the window seven days back from the pass, so a new reader whose first send failed lost that week. Both ends of the window are now stored moments.",
+      "The weekly digest is built from the catalogue when it is sent, and a row is written only when the mail went out. The digest has no outbox and no retry. A failed send leaves the window where it was.",
+    cost: "Four failed weeks make the fifth digest hold five weeks of concerts. The first design measured the window seven days back from the pass, so a new reader whose first send failed lost that week. Both ends of the window are now stored.",
   },
 ];
 
@@ -126,7 +125,7 @@ export function CopenScene() {
             lede="Metal, hardcore and punk concerts in and around Copenhagen are announced on each venue's own website, and nobody put them in one list."
           />
           <div className="grid gap-px bg-rule md:grid-cols-2">
-            <TextPane title="The problem">
+            <TextPane title="The venues">
               <p>
                 To know what's on next month, a fan had to check the programmes of a couple of dozen venues. Many
                 of them mix the scene with everything else the venue books, and when a show sells out or moves, only
@@ -139,8 +138,7 @@ export function CopenScene() {
             </TextPane>
             <TextPane title="The people">
               <p>
-                Fans of the scene. Anyone can browse without an account, and an account adds watches, follows, a
-                Profile and mail.
+                Fans of the scene.
               </p>
               <p>
                 During the beta, accounts came by invitation. Sign-up opens to everyone with 1.0.0 on 1 December
@@ -167,7 +165,7 @@ export function CopenScene() {
             <TextPane title="A concert's page">
               <p>
                 Each concert is drawn as a ticket, with the line-up, genres, venue, price, door time and a Tickets
-                button. It can go into your calendar or become a picture for an Instagram story. Where the headliner
+                button. It can go into a calendar or become a picture for an Instagram story. Where the headliner
                 has played enough recent shows, the page offers a playlist of the songs it is likely to play.
               </p>
             </TextPane>
@@ -177,15 +175,14 @@ export function CopenScene() {
                 mail when a venue books it, and following friends shows where they are going.
               </p>
               <p>
-                A concert you are not going to that shares a day with one you are going to is a Clash. The
+                When a reader is going to a concert, every other concert that day is a Clash. The
                 catalogue dims it, and the concert's page names the show it clashes with.
               </p>
             </TextPane>
             <TextPane title="The mail">
               <p>
                 A welcome mail after sign-up. An alert when a watched show is nearly sold out, postponed or
-                cancelled, and a booking alert when a venue books a band you follow. On the day of a show you are
-                going to, a reminder arrives three hours before doors. A weekly digest lists every concert found
+                cancelled, and a booking alert when a venue books a band the reader follows. On the day of a show the reader is going to, a reminder arrives three hours before doors. A weekly digest lists every concert found
                 since the last one. Each of them but the welcome mail has its own switch.
               </p>
             </TextPane>
@@ -276,7 +273,7 @@ export function CopenScene() {
               </Pane>
               <Pane className="p-6 lg:px-8">
                 <p className="font-display text-2xl uppercase">Postgres</p>
-                <p className="mt-2 text-dim">Schema, migrations and typed queries in Drizzle.</p>
+                <p className="mt-2 text-dim">Reached through Drizzle, with typed queries.</p>
               </Pane>
             </div>
             <div className="flex flex-col gap-px bg-rule [&>*:last-child]:flex-1">
@@ -293,7 +290,7 @@ export function CopenScene() {
               </Pane>
               <Pane className="p-6 lg:px-8">
                 <p className="font-display text-2xl uppercase">Console</p>
-                <p className="mt-2 text-dim">A second React app, for the maintainer only. It is not public.</p>
+                <p className="mt-2 text-dim">A second React app that only I use.</p>
               </Pane>
               <Pane className="p-6 lg:px-8">
                 <p className="font-display text-2xl uppercase">Mail</p>
@@ -319,13 +316,11 @@ export function CopenScene() {
             <p>
               The scraper runs as its own process, so a crash while reading one venue cannot take the site down
               (ADR 0003). NestJS was more ceremony than three read-only endpoints needed when I chose it. I took
-              that cost knowingly. The plan already held notifications, playlists and an admin surface, Nest's
-              conventions give an agent one obvious place for each of them, and I wanted to learn it.
+              that cost knowingly. The plan already held notifications, playlists and an admin surface, and Nest's conventions give an agent one obvious place for each. I also wanted to learn Nest.
             </p>
             <p>
               A first run for a venue is slow, because door times are often only on each concert's own page. After
-              that a run re-reads only the concerts whose listing changed, and a daily pass takes a couple of
-              seconds.
+              that a run re-reads only the concerts whose listing changed, and the daily run takes a couple of seconds.
             </p>
           </TextPane>
         </Section>
@@ -339,9 +334,7 @@ export function CopenScene() {
           <div className="grid gap-px bg-rule md:grid-cols-2">
             <TextPane title="Specs first">
               <p>
-                Behaviour lives in 48 capability specs in OpenSpec, with 1,889 requirements and 3,795 scenarios. A
-                change that alters behaviour carries an OpenSpec change, proposed, applied and archived in the same
-                pull request. 433 changes have been archived so far.
+                Behaviour lives in 48 capability specs in OpenSpec, with 1,889 requirements and 3,795 scenarios. A pull request that alters behaviour carries an OpenSpec change, proposed, applied and archived inside it. 433 changes have been archived so far.
               </p>
               <p>
                 A glossary fixes the words for code, specs and issue titles alike. A Concert is never an event,
@@ -367,7 +360,7 @@ export function CopenScene() {
               <p>
                 On 17 September 2026, the second day of the project, a change shipped with every
                 task ticked and the suite green, and the identifier it specified was stored for no row at all.
-                Nobody was careless. The workflow let it through, so the workflow changed.
+                The workflow let it through, and the coverage map and its checks came out of that.
               </p>
             </TextPane>
             <TextPane title="Agents build, I decide">
@@ -382,7 +375,7 @@ export function CopenScene() {
               </p>
             </TextPane>
             <TextPane title="Review has three questions">
-              <p>Every pull request is answered in a comment before it merges:</p>
+              <p>Before a pull request merges, a comment answers them:</p>
               <ol className="grid list-decimal gap-2 pl-5">
                 <li>Each spec edit made after the proposal: accept it, or revert it.</li>
                 <li>Each thing in the diff a reader or a schedule would notice: the requirement that states it.</li>
@@ -393,21 +386,18 @@ export function CopenScene() {
             <TextPane title="Releases">
               <p>
                 Work ships in batches on a release branch. A merge runs only the tests its change can reach. Once per
-                batch the whole suite runs, end-to-end in desktop Chromium and again as an iPhone in WebKit. The last
-                full run passed 2,554 of 2,554.
+                batch the whole suite runs, end-to-end in desktop Chromium and again as an iPhone in WebKit. The last full suite passed 2,554 of 2,554.
               </p>
               <p>
                 I test each release candidate by hand in a throwaway environment with seeded data, then promote it.
                 That made 53 releases between 25 September and 14 November 2026. Since 0.21.0 each batch has a theme
-                and a name, such as Read the poster, Fits in your hand and Finding your sound. The changelog's reader
-                lines appear on the site once for each returning reader.
+                and a name, such as Read the poster, Fits in your hand and Finding your sound. Each returning reader sees the changelog lines written for readers once, on the site.
               </p>
             </TextPane>
           </div>
           <TextPane tone="deep">
             <p>
-              A change to any page is checked on a phone before its pull request opens. A script opens every page in
-              WebKit as an iPhone and in Chromium at 360 pixels wide, and the pull request carries its summary.
+              Before a pull request that changes a page opens, a script loads every page in WebKit as an iPhone and in Chromium at 360 pixels wide. The pull request carries its summary.
             </p>
           </TextPane>
         </Section>
@@ -473,26 +463,17 @@ export function CopenScene() {
             <TextPane title="From earlier versions">
               <p>
                 One filtered by genre during the scrape, so a concert it rejected was never stored. Widening the
-                scene meant re-scraping history that no longer existed. Now every verdict is stored with its source,
+                scene meant re-scraping history that no longer existed. Now every genre judgement is stored with its source,
                 and can be recomputed without a scrape (ADR 0002).
               </p>
-              <p>One keyed a concert on a hash of two URLs, and a late ticket link duplicated it (ADR 0004).</p>
             </TextPane>
             <TextPane title="In this version">
               <p>
-                Three things on this page were changed after they went wrong: the empty identifier that led to the
-                coverage map, the digest window (ADR 0011) and the moved show (ADR 0024).
-              </p>
-              <p>
-                ADR 0008 also corrected the evidence an earlier decision had cited. The 60 rows blamed on delisting
+                ADR 0008 corrected the evidence an earlier decision had cited. The 60 rows blamed on delisting
                 came from a stale build, and the decision stood on better grounds.
               </p>
             </TextPane>
           </div>
-          <MaintainerTodo>
-            TODO(maintainer): In your own words, what would you do differently if you started CopenScene again? The
-            repository records the corrections above, but not your view of them.
-          </MaintainerTodo>
         </Section>
 
         <section aria-label="Contact" className="grid gap-px bg-rule md:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)]">

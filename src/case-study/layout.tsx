@@ -154,17 +154,3 @@ export function ExternalLink({ href, children }: { href: string; children: React
     </a>
   );
 }
-
-/**
- * A gap only the maintainer can fill. It renders on purpose, so a page that
- * still holds one is caught before it ships.
- */
-export function MaintainerTodo({ children }: { children: ReactNode }) {
-  return (
-    <Pane tone="deep" className="p-6 lg:p-8">
-      <p className="max-w-[66ch] border border-dashed border-current p-4 font-mono text-sm leading-relaxed text-dim">
-        {children}
-      </p>
-    </Pane>
-  );
-}
