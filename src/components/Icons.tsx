@@ -19,6 +19,14 @@ export function ArrowUpRight({ className = "size-5" }: IconProps) {
   );
 }
 
+export function ArrowRight({ className = "size-5" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden className={className} {...stroke}>
+      <path d="M4 12h16M13 5l7 7-7 7" />
+    </svg>
+  );
+}
+
 export function ArrowDown({ className = "size-5" }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden className={className} {...stroke}>

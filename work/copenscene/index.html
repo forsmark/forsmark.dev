@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0b0c" />
+    <script>
+      try {
+        if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+      } catch (e) {}
+    </script>
+    <title>CopenScene case study · Marc Forsmark Nielsen</title>
+    <meta name="description" content="How CopenScene, a concert listing for Copenhagen's metal, hardcore and punk scene, is built: 48 specs, a map from scenarios to tests, and AI agents under a written process." />
+    <meta name="author" content="Marc Forsmark Nielsen" />
+    <link rel="canonical" href="https://forsmark.dev/work/copenscene/" />
+    <meta property="og:site_name" content="Marc Forsmark Nielsen" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:title" content="CopenScene, a case study" />
+    <meta property="og:description" content="A concert listing for Copenhagen's metal, hardcore and punk scene, built from 48 specs and a map from scenarios to tests." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://forsmark.dev/work/copenscene/" />
+    <meta property="og:image" content="https://forsmark.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CopenScene, a case study" />
+    <meta name="twitter:description" content="A concert listing for Copenhagen's metal, hardcore and punk scene, built from 48 specs and a map from scenarios to tests." />
+    <meta name="twitter:image" content="https://forsmark.dev/og-image.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- 100% privacy-first analytics -->
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    <div id="root"></div>
+    <noscript>
+      <main style="max-width: 40rem; padding: 2rem; font-family: system-ui, sans-serif; color: #e9e8e2">
+        <h1>CopenScene, a case study</h1>
+        <p>A free concert listing for Copenhagen's metal, hardcore and punk scene, live at <a href="https://copenscene.rocks" style="color: inherit">copenscene.rocks</a>. This page needs JavaScript.</p>
+        <p><a href="/" style="color: inherit">Marc Forsmark Nielsen</a> · <a href="mailto:marc@forsmark.dev" style="color: inherit">marc@forsmark.dev</a></p>
+      </main>
+    </noscript>
+    <script type="module" src="/src/case-study/copenscene/main.tsx"></script>
+  </body>
+</html>

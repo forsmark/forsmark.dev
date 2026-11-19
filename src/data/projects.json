@@ -3,15 +3,15 @@
     "id": "copenscene",
     "tier": "lead",
     "title": "CopenScene",
-    "problem": "Concerts for Copenhagen's metal, hardcore and punk scene are spread over 25 venue websites.",
+    "problem": "Concerts for Copenhagen's metal, hardcore and punk scene are spread over 28 venue websites.",
     "people": "Fans of the scene who want one overview, and a reason to check back when a show changes.",
     "build": [
-      "A scheduled worker scrapes 25 venues into Postgres. It re-reads only concerts whose listing changed, so a daily run takes seconds.",
+      "A scheduled worker scrapes 28 venues into Postgres. It re-reads only concerts whose listing changed, so a daily run takes seconds.",
       "A React client lists the concerts and shows them on a map.",
       "Fans mark concerts with a passwordless account and get an email when a marked concert changes status.",
       "Decisions are written down as ADRs. Only venues on the curated list are included."
     ],
-    "status": "In beta, v1.0 late 2026",
+    "status": "Sign-up opens 1 December 2026",
     "year": "2025 – 2026",
     "tech": [
       "NestJS",
@@ -19,6 +19,17 @@
       "Drizzle",
       "React",
       "Podman"
+    ],
+    "caseStudyUrl": "/work/copenscene/",
+    "images": [
+      {
+        "src": "/projects/copenscene/catalogue-desktop.webp",
+        "caption": "The catalogue"
+      },
+      {
+        "src": "/projects/copenscene/concert-desktop.webp",
+        "caption": "A concert's page"
+      }
     ]
   },
   {

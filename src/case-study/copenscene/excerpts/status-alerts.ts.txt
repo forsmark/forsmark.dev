@@ -1,0 +1,19 @@
+/** The Statuses after which the date a reader planned on no longer holds. */
+const DATE_LOST: ReadonlySet<ConcertStatus> = new Set(['cancelled', 'postponed']);
+
+/**
+ * Whether this Intent wants to hear about this Status, and this preference will
+ * have it. A *going* Account hears only of a cancellation or postponement.
+ * Delisting writes no transition (ADR 0008). A Move does, as a postponement
+ * (ADR 0024).
+ */
+export function worthTelling(
+  intent: WatchIntent,
+  preference: AlertPreference,
+  toStatus: ConcertStatus,
+): boolean {
+  const asked = intent === 'watching' || DATE_LOST.has(toStatus);
+  const accepted =
+    preference === 'everything' || (preference === 'cancellations-only' && DATE_LOST.has(toStatus));
+  return asked && accepted;
+}

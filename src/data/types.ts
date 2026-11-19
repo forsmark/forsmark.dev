@@ -42,6 +42,8 @@ export interface Project {
   year: string;
   tech: string[];
   demoUrl?: string;
+  /** A page of its own on this site, for a project told at length. */
+  caseStudyUrl?: string;
   githubUrl?: string;
   images?: { src: string; caption?: string }[];
 }

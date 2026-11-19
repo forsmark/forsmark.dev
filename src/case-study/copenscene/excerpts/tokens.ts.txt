@@ -1,0 +1,28 @@
+/** The page behind everything. */
+export const GROUND = '#0E0E10';
+
+/** A ticket, a panel, a raised block. */
+export const SURFACE = '#373A3E';
+
+/** Text and rules. */
+export const INK = '#FFF2DF';
+
+/** Going, and on sale. Never text on a light fill: accent on ink is 2.14 to 1. */
+export const ACCENT = '#FF8A00';
+
+/**
+ * A ticket cannot be bought now, or the date no longer holds: cancelled,
+ * postponed, sold out, or a waiting list.
+ *
+ * A fill with ground-coloured text, never coloured text: a red that passes as
+ * text is 1.0 against the accent. 5.95 to 1 for ground text on it, 3.53 to 1
+ * against a ticket. Saturation 64, so a cancellation does not read as an alarm.
+ */
+export const WARN = '#DD6E62';
+
+/**
+ * A ticket can be bought but will not be for long: few tickets. A fill, like
+ * the warning and at its saturation: 10.01 to 1 for ground text on it, 5.94 to
+ * 1 against a ticket. It is 18 degrees from the accent, which is never a fill.
+ */
+export const CAUTION = '#D9B84A';

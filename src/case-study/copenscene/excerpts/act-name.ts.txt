@@ -1,0 +1,24 @@
+/**
+ * Reduce a scraped Act name to a match key, so one band spelled differently by
+ * different venues resolves to one Act.
+ */
+export function normaliseActName(name: string): string {
+  // Bracketed parts are qualifiers - "Mgła (PL)" - unless the whole name is
+  // one: [ingenting] is a band, and stripping it would leave no key.
+  const stripped = name.replace(/[([{][^)\]}]*[)\]}]/g, ' ');
+  const withoutBrackets = /[\p{L}\p{N}]/u.test(stripped) ? stripped : name;
+
+  const folded = transliterate(
+    withoutBrackets
+      .normalize('NFC')
+      .toLowerCase()
+      .replace(NON_DECOMPOSING_PATTERN, (char) => NON_DECOMPOSING[char] ?? char),
+  )
+    .normalize('NFD')
+    .replace(/\p{M}+/gu, '');
+
+  return folded
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .replace(/\s+/g, ' ');
+}

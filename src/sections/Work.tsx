@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { Pane } from "../components/Pane";
-import { ArrowUpRight, Close, GitHub } from "../components/Icons";
+import { ArrowRight, ArrowUpRight, Close, GitHub } from "../components/Icons";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { glass } from "../lib/motion";
 import projects from "../data/projects.json";
@@ -83,6 +83,7 @@ function ClosedPane({ project, size, narrow }: { project: Project; size: "lead" 
 
 function OpenPane({ project, onClose }: { project: Project; onClose: () => void }) {
   const links = [
+    project.caseStudyUrl && { href: project.caseStudyUrl, label: "Read the case study", icon: <ArrowRight /> },
     project.demoUrl && { href: project.demoUrl, label: "Open the live site", icon: <ArrowUpRight /> },
     project.githubUrl && { href: project.githubUrl, label: "Read the code on GitHub", icon: <GitHub className="size-4" /> },
   ].filter(Boolean) as { href: string; label: string; icon: React.ReactNode }[];
@@ -143,7 +144,7 @@ function OpenPane({ project, onClose }: { project: Project; onClose: () => void 
       <div className="grid gap-px bg-rule md:grid-cols-[minmax(0,1fr)_auto]">
         <p className="bg-pane p-6 text-dim lg:px-8">{project.tech.join(" · ")}</p>
         {links.length > 0 ? (
-          <div className="flex gap-px bg-rule">
+          <div className="flex flex-wrap gap-px bg-rule">
             {links.map((l) => (
               <a
                 key={l.href}
@@ -154,6 +155,7 @@ function OpenPane({ project, onClose }: { project: Project; onClose: () => void 
                 {l.icon}
               </a>
             ))}
+            {!project.githubUrl && <p className="flex flex-1 items-center bg-pane p-6 text-dim lg:px-8">Private repository</p>}
           </div>
         ) : (
           <p className="bg-pane p-6 text-dim lg:px-8">Private repository</p>

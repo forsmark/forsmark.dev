@@ -1,13 +1,10 @@
 import { Pane } from "../components/Pane";
 import { EmailPane } from "../components/EmailPane";
 import { ArrowUpRight, GitHub, LinkedIn } from "../components/Icons";
+import { SiteFooter } from "../components/SiteFooter";
 import resume from "../data/resume.json";
 
-const SA_LINK = "https://www.simpleanalytics.com?utm_source=forsmark.dev&utm_content=badge";
-
 export function Contact() {
-  const year = new Date().getFullYear();
-
   return (
     <section id="contact" aria-labelledby="contact-title" className="grid gap-px bg-rule">
       <div className="grid gap-px bg-rule md:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)]">
@@ -48,23 +45,7 @@ export function Contact() {
         ))}
       </div>
 
-      <footer className="grid gap-px bg-rule sm:grid-cols-2">
-        <Pane tone="deep" reveal={false} className="px-6 py-5 text-sm text-dim lg:px-8">
-          <p>
-            © {year} {resume.name}
-          </p>
-        </Pane>
-        <Pane tone="deep" reveal={false} className="px-6 py-5 text-sm text-dim sm:text-right lg:px-8">
-          <a
-            href={SA_LINK}
-            referrerPolicy="origin"
-            target="_blank"
-            className="underline decoration-rule hover:text-ink hover:decoration-current"
-          >
-            100% privacy-first analytics by Simple Analytics
-          </a>
-        </Pane>
-      </footer>
+      <SiteFooter />
     </section>
   );
 }
